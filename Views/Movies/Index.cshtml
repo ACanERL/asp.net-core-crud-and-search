@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication2.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Film Bilgileri</h1>
+
+ 
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Film Adi
+            </th>
+            <th>
+               Çıkış Tarihi
+            </th>
+            <th>
+                Film Türü
+            </th>
+            <th>
+               Maliyet
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Güncelle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+<br />
+<p>
+    <a asp-action="Create">Yeni Film Ekle</a>
+</p>
